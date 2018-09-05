@@ -1,0 +1,68 @@
+@mixin desktop() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+.wp-block-storypage-columns {
+  margin-bottom: 20px;
+
+  .columns-section-header {
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      font-weight: normal;
+    }
+  }
+
+  .columns,
+  .columns > .editor-inner-blocks > .editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include desktop() {
+      flex-wrap: nowrap;
+    }
+
+    &.has-4-columns,
+    &.has-2-columns {
+      .column {
+        @include tablet() {
+          width: 50%;
+        }
+
+        @include desktop() {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .column {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .circled img {
+      border-radius: 50%;
+    }
+
+    &__image img {
+      max-width: 100%;
+      margin: 5px 0;
+    }
+
+    &__description {
+      line-height: 1.6;
+      color: #666666;
+    }
+  }
+}
