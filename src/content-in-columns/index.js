@@ -97,7 +97,7 @@ export const settings = {
     settings.updateInnerBlocks(clientId, attributes);
 
     return [
-      <section className={`${className} wp-block-storypage-columns`}>
+      <section className={`${className}`}>
         <InnerBlocks
           template={settings.getTemplate(attributes)}
           templateLock="all"
@@ -138,7 +138,7 @@ export const settings = {
 
   save({ className }) {
     return (
-      <section className={`${className} wp-block-storypage-columns`}>
+      <section className={`${className}`}>
         <InnerBlocks.Content />
       </section>
     );
