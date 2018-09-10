@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-content-in-columns",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A custom block for gutenberg-js",
   "main": "build/index.js",
   "files": [
