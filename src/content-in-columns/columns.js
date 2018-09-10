@@ -1,3 +1,4 @@
+import React from 'react';
 import { i18n, editor } from 'wp';
 
 const { __ } = i18n;
@@ -14,11 +15,11 @@ export const settings = {
 
   attributes: {
     columns: {
-      type: 'number'
-    }
+      type: 'number',
+    },
   },
 
-  getColumnsTemplate(columns) {
+  getColumnsTemplate (columns) {
     const columnBlocks = [];
     for (let i = 0; i < columns; i++) {
       columnBlocks.push(['cloudblocks/content-in-columns--column']);
@@ -26,10 +27,10 @@ export const settings = {
     return columnBlocks;
   },
 
-  edit({ attributes, className }) {
+  edit ({ attributes, className }) {
     const { columns } = attributes;
 
-    return [
+    return (
       <div className={`${className} columns has-${columns}-columns`}>
         <InnerBlocks
           template={settings.getColumnsTemplate(columns)}
@@ -37,10 +38,10 @@ export const settings = {
           allowedBlocks={ALLOWED_BLOCKS}
         />
       </div>
-    ];
+    );
   },
 
-  save({ attributes, className }) {
+  save ({ attributes, className }) {
     const { columns } = attributes;
 
     return (
@@ -48,5 +49,5 @@ export const settings = {
         <InnerBlocks.Content />
       </div>
     );
-  }
+  },
 };

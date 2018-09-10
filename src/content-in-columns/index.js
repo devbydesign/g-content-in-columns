@@ -1,3 +1,6 @@
+/* eslint react/jsx-key: 0 */
+
+import React from 'react';
 import { i18n, components, editor, data } from 'wp';
 
 import './style.scss';
@@ -17,23 +20,23 @@ export const settings = {
   attributes: {
     columns: {
       type: 'number',
-      default: 3
+      default: 3,
     },
     showImages: {
       type: 'boolean',
-      default: true
+      default: true,
     },
     circledImages: {
       type: 'boolean',
-      default: true
+      default: true,
     },
     showButtons: {
       type: 'boolean',
-      default: true
-    }
+      default: true,
+    },
   },
 
-  getTemplate(attributes) {
+  getTemplate (attributes) {
     return [
       [
         'core/heading',
@@ -41,17 +44,17 @@ export const settings = {
           placeholder: 'Section header',
           content: 'Section header',
           level: 2,
-          align: 'center'
-        }
+          align: 'center',
+        },
       ],
       [
         'cloudblocks/content-in-columns--columns',
-        { columns: attributes.columns }
-      ]
+        { columns: attributes.columns },
+      ],
     ];
   },
 
-  updateInnerBlocks(
+  updateInnerBlocks (
     clientId,
     { columns, showImages, circledImages, showButtons }
   ) {
@@ -72,14 +75,14 @@ export const settings = {
           dispatch('core/editor').updateBlockAttributes(block.clientId, {
             showImages,
             circledImages,
-            showButtons
+            showButtons,
           });
         });
       }
     }
   },
 
-  edit({ attributes, className, setAttributes, clientId }) {
+  edit ({ attributes, className, setAttributes, clientId }) {
     const { columns, showImages, circledImages, showButtons } = attributes;
 
     const toggleImages = () => setAttributes({ showImages: !showImages });
@@ -132,15 +135,15 @@ export const settings = {
             onChange={toggleButtons}
           />
         </PanelBody>
-      </InspectorControls>
+      </InspectorControls>,
     ];
   },
 
-  save({ className }) {
+  save ({ className }) {
     return (
       <section className={`${className}`}>
         <InnerBlocks.Content />
       </section>
     );
-  }
+  },
 };
