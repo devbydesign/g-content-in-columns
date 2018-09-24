@@ -1,13 +1,20 @@
 {
   "name": "@frontkom/g-content-in-columns",
   "version": "0.1.1",
-  "description": "A custom block for gutenberg-js",
+  "description": "A custom block for Gutenberg Cloud",
   "main": "build/index.js",
   "files": [
-    "build/"
+    "build/",
+    "screenshot.png"
   ],
+  "gutenbergCloud": {
+    "js": "build/index.js",
+    "css": "build/style.css",
+    "screenshot": "screenshot.png",
+    "name": "Content in columns"
+  },
   "scripts": {
-    "build": "NODE_ENV=development webpack",
+    "build": "NODE_ENV=production webpack",
     "deploy": "npm run build && npm publish --access public"
   },
   "author": "Frontkom",
