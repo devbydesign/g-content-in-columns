@@ -31,7 +31,7 @@ export const settings = {
     const { columns } = attributes;
 
     return (
-      <div className={`${className} columns has-${columns}-columns`}>
+      <div className={`${className} columns`}>
         <InnerBlocks
           template={settings.getColumnsTemplate(columns)}
           templateLock="all"
@@ -41,11 +41,9 @@ export const settings = {
     );
   },
 
-  save ({ attributes, className }) {
-    const { columns } = attributes;
-
+  save ({ className }) {
     return (
-      <div className={`${className} columns has-${columns}-columns`}>
+      <div className={`${className} columns`}>
         <InnerBlocks.Content />
       </div>
     );
