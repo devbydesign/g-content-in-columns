@@ -18,6 +18,14 @@ import '@frontkom/g-content-in-columns/build/style.css';
 
 This will create a new block category called "**Gutenberg-Cloud Blocks**" containing the "**Content in columns**" block.
 
+# Dev mode
+
+To run the block in development mode:
+
+```
+$ npm start
+```
+
 ## Project Structure
 TBA
 
