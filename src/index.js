@@ -11,7 +11,7 @@ const { __ } = i18n;
 // Category name and slug
 const category = {
   slug: 'cloudblocks', // needs to match the css class of the block container: ".wp-block-cloudblocks-[block-name]"
-  title: __('Gutenberg-Cloud Blocks'),
+  title: __('Cloud Blocks'),
 };
 
 // Register the new category and blocks
