@@ -9,6 +9,54 @@ const { select, dispatch } = data;
 
 const ALLOWED_BLOCKS = ['core/heading', 'core/paragraph', 'core/button'];
 
+function getTemplate ({ showImages, circledImages, showButtons }) {
+  const template = [];
+  if(showImages) {
+    template.push(['core/image', {
+      className: circledImages ? 'column__image circled' : 'column__image',
+    }]);
+  }
+
+  template.push(
+    ['core/heading', {
+      placeholder: 'Column title',
+      content: 'Column Title Here',
+      level: 3,
+    }],
+    ['core/paragraph', {
+      placeholder: 'Column description',
+      content: 'Some random text here. Make sure to replace this.',
+      className: 'column__description',
+    }]
+  );
+
+  if (showButtons) {
+    template.push([ 'core/button', {
+      text: 'Learn more',
+      url: 'https://github.com/front/gutenberg-js',
+      className: 'column__cta',
+    }]);
+  }
+
+  return template;
+}
+
+function updateInnerBlocks (clientId, { circledImages }) {
+  const blockInstance = select('core/editor').getBlocksByClientId(clientId)[0];
+
+  if(blockInstance) {
+    const imageBlockInstance = blockInstance.innerBlocks[0];
+
+    if(imageBlockInstance) {
+      dispatch('core/editor').updateBlockAttributes(
+        imageBlockInstance.clientId,
+        { className: circledImages ? 'column__image circled' : 'column__image' }
+      );
+    }
+  }
+}
+
+
 export const name = 'content-in-columns--column';
 
 export const settings = {
@@ -29,62 +77,13 @@ export const settings = {
     },
   },
 
-  getTemplate ({ showImages, circledImages, showButtons }) {
-    const template = [];
-    if (showImages) {
-      template.push(['core/image', {
-        className: circledImages ? 'column__image circled' : 'column__image',
-      }]);
-    }
-
-    template.push(
-      ['core/heading', {
-        placeholder: 'Column title',
-        content: 'Column Title Here',
-        level: 3,
-      }],
-      ['core/paragraph', {
-        placeholder: 'Column description',
-        content: 'Some random text here. Make sure to replace this.',
-        className: 'column__description',
-      }]
-    );
-
-    if (showButtons) {
-      template.push([ 'core/button', {
-        text: 'Learn more',
-        url: 'https://github.com/front/gutenberg-js',
-        className: 'column__cta',
-      }]);
-    }
-
-    return template;
-  },
-
-  updateInnerBlocks (clientId, { circledImages }) {
-    const blockInstance = select('core/editor').getBlocksByClientId(clientId)[0];
-
-    if (blockInstance) {
-      const imageBlockInstance = blockInstance.innerBlocks[0];
-
-      if (imageBlockInstance) {
-        dispatch('core/editor').updateBlockAttributes(
-          imageBlockInstance.clientId,
-          {
-            className: circledImages ? 'column__image circled' : 'column__image',
-          }
-        );
-      }
-    }
-  },
-
   edit ({ attributes, clientId }) {
-    settings.updateInnerBlocks(clientId, attributes);
+    updateInnerBlocks(clientId, attributes);
 
     return (
       <div className="column">
         <InnerBlocks
-          template={settings.getTemplate(attributes)}
+          template={getTemplate(attributes)}
           templateLock="all"
           allowedBlocks={ALLOWED_BLOCKS}
         />
