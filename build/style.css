@@ -27,5 +27,3 @@
     display: flex; }
     .wp-block-cloudblocks-content-in-columns .columns > .editor-inner-blocks > .editor-block-list__layout > div {
       flex: 1; }
-      .wp-block-cloudblocks-content-in-columns .columns > .editor-inner-blocks > .editor-block-list__layout > div:first-child {
-        margin-top: 20px; }
