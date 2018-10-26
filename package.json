@@ -18,15 +18,22 @@
     "start": "npm run build && BLOCK_DIR=$PWD npm --prefix node_modules/@frontkom/g-editor start",
     "deploy": "npm run build && npm publish --access public"
   },
-  "author": "Frontkom",
+  "author": {
+    "name": "Frontkom",
+    "email": "front@front.no",
+    "url" : "https://www.frontkom.no/"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/front/g-content-in-columns.git"
   },
+  "homepage": "https://github.com/front/g-content-in-columns#readme",
   "keywords": [
     "gutenberg",
-    "gutenberg-cloud"
+    "gutenberg-cloud",
+    "features",
+    "columns"
   ],
   "engines": {
     "node": ">=8.9.0",

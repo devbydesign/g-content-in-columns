@@ -1,7 +1,7 @@
 # g-content-in-columns
 A Gutenberg block
 
-# Installation
+## Installation
 
 Install from npm:
 
@@ -16,9 +16,9 @@ import '@frontkom/g-content-in-columns';
 import '@frontkom/g-content-in-columns/build/style.css';
 ```
 
-This will create a new block category called "**Gutenberg-Cloud Blocks**" containing the "**Content in columns**" block.
+This will create a new block category called "**Cloud Blocks**" containing the "**Content in columns**" block.
 
-# Dev mode
+## Dev mode
 
 To run the block in development mode:
 
@@ -26,13 +26,7 @@ To run the block in development mode:
 $ npm start
 ```
 
-## Project Structure
-TBA
-
-
-## Development
-TBA
-
 
 ## Gutenberg Cloud
-TBA
+
+Read more at [https://gutenbergcloud.org/](https://gutenbergcloud.org/)
