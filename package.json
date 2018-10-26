@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-content-in-columns",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A custom block for Gutenberg Cloud",
   "main": "build/index.js",
   "files": [
@@ -21,7 +21,7 @@
   "author": {
     "name": "Frontkom",
     "email": "front@front.no",
-    "url" : "https://www.frontkom.no/"
+    "url": "https://www.frontkom.no/"
   },
   "license": "MIT",
   "repository": {
