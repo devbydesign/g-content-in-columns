@@ -30,10 +30,16 @@
   }
 
   // Editor overrides
-  .columns > .editor-inner-blocks > .editor-block-list__layout {
-    display: flex;
-    & > div {
-      flex: 1;
+  & > .editor-inner-blocks {
+    width: 100%;
+    & > .editor-block-list__layout {
+      display: flex;
+      & > .editor-block-list__block {
+        flex: 1;
+        & > .editor-block-list__block-edit {
+          margin-top: 12px !important;
+        }
+      }
     }
   }
 }
