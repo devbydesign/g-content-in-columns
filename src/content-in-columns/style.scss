@@ -1,36 +1,14 @@
-@mixin desktop() {
-  @media (min-width: 768px) {
-    @content;
-  }
-}
-
-@mixin tablet() {
-  @media (min-width: 480px) {
-    @content;
-  }
-}
 
 .wp-block-cloudblocks-content-in-columns {
   margin-bottom: 20px;
   box-sizing: border-box;
 
-  .columns-section-header {
-    width: 100%;
-    text-align: center;
-
-    h2 {
-      font-weight: normal;
-    }
-  }
-
-  .columns {
-    @include desktop() {
-      display: flex;
-    }
+  @media (min-width: 768px) {
+    display: flex;
   }
 
   .column {
-    @include desktop() {
+    @media (min-width: 768px) {
       flex: 1;
     }
     text-align: center;

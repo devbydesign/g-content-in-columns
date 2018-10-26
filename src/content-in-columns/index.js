@@ -10,6 +10,31 @@ const { PanelBody, RangeControl, ToggleControl } = components;
 const { InnerBlocks, InspectorControls } = editor;
 const { select, dispatch } = data;
 
+const ALLOWED_BLOCKS = ['cloudblocks/content-in-columns--column'];
+
+function getTemplate (columns) {
+  const columnBlocks = [];
+  for (let i = 0; i < columns; i++) {
+    columnBlocks.push(['cloudblocks/content-in-columns--column']);
+  }
+  return columnBlocks;
+}
+
+function updateInnerBlocks (clientId, { showImages, circledImages, showButtons }) {
+  const blockInstance = select('core/editor').getBlocksByClientId(clientId)[0];
+
+  if (blockInstance && blockInstance.innerBlocks) {
+    blockInstance.innerBlocks.forEach(block => {
+      dispatch('core/editor').updateBlockAttributes(block.clientId, {
+        showImages,
+        circledImages,
+        showButtons,
+      });
+    });
+  }
+}
+
+
 export const name = 'content-in-columns';
 
 export const settings = {
@@ -36,43 +61,6 @@ export const settings = {
     },
   },
 
-  getTemplate (attributes) {
-    return [
-      [
-        'cloudblocks/content-in-columns--columns',
-        { columns: attributes.columns },
-      ],
-    ];
-  },
-
-  updateInnerBlocks (
-    clientId,
-    { columns, showImages, circledImages, showButtons }
-  ) {
-    const blockInstance = select('core/editor').getBlocksByClientId(
-      clientId
-    )[0];
-
-    if (blockInstance && blockInstance.innerBlocks) {
-      const columnsBlockInstance = blockInstance.innerBlocks[1];
-
-      if (columnsBlockInstance && columnsBlockInstance.innerBlocks) {
-        dispatch('core/editor').updateBlockAttributes(
-          columnsBlockInstance.clientId,
-          { columns }
-        );
-
-        columnsBlockInstance.innerBlocks.forEach(block => {
-          dispatch('core/editor').updateBlockAttributes(block.clientId, {
-            showImages,
-            circledImages,
-            showButtons,
-          });
-        });
-      }
-    }
-  },
-
   edit ({ attributes, className, setAttributes, clientId }) {
     const { columns, showImages, circledImages, showButtons } = attributes;
 
@@ -88,16 +76,16 @@ export const settings = {
       }, 50);
     };
 
-    settings.updateInnerBlocks(clientId, attributes);
+    updateInnerBlocks(clientId, attributes);
 
     return [
       <section className={`${className}`}>
         <InnerBlocks
-          template={settings.getTemplate(attributes)}
+          template={getTemplate(columns)}
           templateLock="all"
+          allowedBlocks={ALLOWED_BLOCKS}
         />
       </section>,
-
       <InspectorControls>
         <PanelBody title={__('Block Settings')}>
           <RangeControl

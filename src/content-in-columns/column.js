@@ -15,7 +15,7 @@ export const settings = {
   title: __('Column'),
   description: __('A single column within a columns block.'),
   icon: 'columns',
-  parent: ['cloudblocks/content-in-columns--columns'],
+  parent: ['cloudblocks/content-in-columns'],
 
   attributes: {
     showImages: {
@@ -32,7 +32,9 @@ export const settings = {
   getTemplate ({ showImages, circledImages, showButtons }) {
     const template = [];
     if (showImages) {
-      template.push(['core/image', { className: circledImages ? 'column__image circled' : 'column__image' }]);
+      template.push(['core/image', {
+        className: circledImages ? 'column__image circled' : 'column__image',
+      }]);
     }
 
     template.push(

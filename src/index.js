@@ -1,7 +1,6 @@
 import { blocks, data, i18n } from 'wp';
 
-import * as contentInColumns from './content-in-columns';
-import * as columns from './content-in-columns/columns';
+import * as block from './content-in-columns';
 import * as column from './content-in-columns/column';
 
 const { registerBlockType } = blocks;
@@ -23,7 +22,7 @@ export function registerBlocks () {
 
   dispatch('core/blocks').setCategories([category, ...currentCategories]);
 
-  for (const { name, settings } of [contentInColumns, columns, column]) {
+  for (const { name, settings } of [block, column]) {
     // Register each block
     registerBlockType(`${category.slug}/${name}`, {
       category: category.slug,
