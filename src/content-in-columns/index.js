@@ -39,15 +39,6 @@ export const settings = {
   getTemplate (attributes) {
     return [
       [
-        'core/heading',
-        {
-          placeholder: 'Section header',
-          content: 'Section header',
-          level: 2,
-          align: 'center',
-        },
-      ],
-      [
         'cloudblocks/content-in-columns--columns',
         { columns: attributes.columns },
       ],
