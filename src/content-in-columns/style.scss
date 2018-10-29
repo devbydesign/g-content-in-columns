@@ -1,18 +1,15 @@
 
 .wp-block-cloudblocks-content-in-columns {
-  margin-bottom: 20px;
-  box-sizing: border-box;
+  $max-cols: 4;
 
-  @media (min-width: 768px) {
-    display: flex;
+  margin-bottom: 20px;
+  * {
+    box-sizing: border-box;
   }
 
   .column {
-    @media (min-width: 768px) {
-      flex: 1;
-    }
     text-align: center;
-    padding: 10px;
+    padding: 10px 20px;
 
     .circled img {
       border-radius: 50%;
@@ -29,17 +26,42 @@
     }
   }
 
+  @for $i from 1 through $max-cols {
+    &.columns-#{$i} .column {
+      @media (min-width: 768px) {
+        float: left;
+        width: 100% / $i;
+      }
+    }
+  }
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
   // Editor overrides
   & > .editor-inner-blocks {
     width: 100%;
     & > .editor-block-list__layout {
-      display: flex;
       & > .editor-block-list__block {
-        flex: 1;
+        margin-left: 0;
+        margin-right: 0;
+        .column {
+          float: none;
+          width: 100%;
+        }
         & > .editor-block-list__block-edit {
-          margin-top: 12px !important;
+          margin-top: 12px;
         }
       }
+    }
+  }
+
+  @for $i from 1 through $max-cols {
+    &.columns-#{$i} > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
+      float: left;
+      width: 100% / $i;
     }
   }
 }
