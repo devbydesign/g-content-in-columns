@@ -79,7 +79,7 @@ export const settings = {
     updateInnerBlocks(clientId, attributes);
 
     return [
-      <section className={`${className}`}>
+      <section className={`${className} columns-${columns}`}>
         <InnerBlocks
           template={getTemplate(columns)}
           templateLock="all"
@@ -118,9 +118,10 @@ export const settings = {
     ];
   },
 
-  save ({ className }) {
+  save ({ attributes, className }) {
+    const { columns } = attributes;
     return (
-      <section className={`${className}`}>
+      <section className={`${className} columns-${columns}`}>
         <InnerBlocks.Content />
       </section>
     );
