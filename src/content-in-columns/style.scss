@@ -10,6 +10,10 @@
     text-align: center;
     padding: 10px 20px;
 
+    figure {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
     .circled img {
       border-radius: 50%;
     }
@@ -21,7 +25,8 @@
 
     &__description {
       line-height: 1.6;
-      color: #666666;
+      color: #000;
+      opacity: 0.6;
     }
   }
 
