@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-content-in-columns",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A custom block for Gutenberg Cloud",
   "main": "build/index.js",
   "gutenbergCloud": {
