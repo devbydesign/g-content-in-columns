@@ -2,7 +2,6 @@
 .wp-block-cloudblocks-content-in-columns {
   $max-cols: 4;
 
-  margin-bottom: 20px;
   * {
     box-sizing: border-box;
   }
@@ -26,6 +25,7 @@
     }
   }
 
+  // Column layout
   @for $i from 1 through $max-cols {
     &.columns-#{$i} .column {
       @media (min-width: 768px) {
