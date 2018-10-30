@@ -3,10 +3,6 @@
   "version": "0.4.3",
   "description": "A custom block for Gutenberg Cloud",
   "main": "build/index.js",
-  "files": [
-    "build/",
-    "screenshot.png"
-  ],
   "gutenbergCloud": {
     "js": "build/index.js",
     "css": "build/style.css",
@@ -20,7 +16,7 @@
   },
   "author": {
     "name": "Frontkom",
-    "email": "front@front.no",
+    "email": "webadmin@front.no",
     "url": "https://www.frontkom.no/"
   },
   "license": "MIT",
@@ -59,5 +55,9 @@
     "url-loader": "^1.1.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "files": [
+    "build/",
+    "screenshot.png"
+  ]
 }
